@@ -356,9 +356,16 @@
       
         
           
-            <p><a href="http://docs.peewee-orm.com/en/latest/" target="_blank" rel="noopener">peewee官网</a></p>
+          peewee官网
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/05/2019-05-02-peewee-一个python操作mysql的库/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -499,10 +506,17 @@
       
         
           
-            <p><a href="https://github.com/kubo/snzip" target="_blank" rel="noopener">snzip</a></p>
-<p>mac会报错，需要：<br><code>mv /usr/local/include /usr/local/include_old</code><br>使得<code>g++/clang</code>不会查询这个文件夹里的headers，就不会报错了，但是不知道为啥会报错。。。</p>
+          snzip
+mac会报错，需要：mv /usr/local/include /usr/local/include_old使得g++/clang不会查询这个文件夹里的headers，就不会报错了，但是不知道为啥会报错。。。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/05/2019-05-02-snappy文件压缩与解压/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -665,9 +679,16 @@
       
         
           
-            <p>抄都懒得抄了，怎么办。。。<br>放上链接吧~~~<br><a href="https://www.jianshu.com/p/191d1e21f7ed" target="_blank" rel="noopener">Markdown基本语法</a></p>
+          抄都懒得抄了，怎么办。。。放上链接吧~~~Markdown基本语法
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/02/2019-05-02-Markdown基本语法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -841,61 +862,17 @@
       
         
           
-            <p>hive on spark对hive和spark的版本要求比较严格。之前调试踩了各种坑，最后屈服，使用了hadoop 2.6，spark 2.0.0，hive 2.3.4</p>
-<p>调度统一使用YARN</p>
-<p>官方链接<br><a href="https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started" target="_blank" rel="noopener">https://cwiki.apache.org/confluence/display/Hive/Hive+on+Spark%3A+Getting+Started</a></p>
-<h1 id="1-安装Java"><a href="#1-安装Java" class="headerlink" title="1. 安装Java"></a>1. 安装Java</h1><h1 id="2-部署Mysql（用来放hive的元数据）"><a href="#2-部署Mysql（用来放hive的元数据）" class="headerlink" title="2. 部署Mysql（用来放hive的元数据）"></a>2. 部署Mysql（用来放hive的元数据）</h1><h1 id="3-安装maven"><a href="#3-安装maven" class="headerlink" title="3. 安装maven"></a>3. 安装maven</h1><h1 id="4-安装hadoop（伪分布式）"><a href="#4-安装hadoop（伪分布式）" class="headerlink" title="4. 安装hadoop（伪分布式）"></a>4. 安装hadoop（伪分布式）</h1><p>下载hadoop对应版本：<a href="http://archive.apache.org/dist/hadoop/core/" target="_blank" rel="noopener">全版本hadoop下载链接</a></p>
-<p>解压后，在 <code>~/.bashrc</code> 文件中配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME=&#123;/usr/local/hadoop&#125;</span><br><span class="line">export HADOOP_MAPRED_HOME=$HADOOP_HOME </span><br><span class="line">export HADOOP_COMMON_HOME=$HADOOP_HOME </span><br><span class="line">export HADOOP_HDFS_HOME=$HADOOP_HOME </span><br><span class="line">export YARN_HOME=$HADOOP_HOME </span><br><span class="line">export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native </span><br><span class="line">export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin </span><br><span class="line">export HADOOP_INSTALL=$HADOOP_HOME</span><br></pre></td></tr></table></figure></p>
-<p>然后<br><code>$ hadoop version</code></p>
-<p>应该会看到<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Hadoop 2.6.0</span><br><span class="line">Subversion https://git-wip-us.apache.org/repos/asf/hadoop.git -r e3496499ecb8d220fba99dc5ed4c99c8f9e33bb1</span><br><span class="line">Compiled by jenkins on 2014-11-13T21:10Z</span><br><span class="line">Compiled with protoc 2.5.0</span><br><span class="line">From source with checksum 18e43357c8f927c0695f1e9522859d6a</span><br></pre></td></tr></table></figure></p>
-<p>为了使用Java开发Hadoop程序，必须用java在系统中的位置替换JAVA_HOME值并重新设置hadoop-env.sh文件的java环境变量<br><code>export JAVA_HOME={}</code></p>
-<hr>
-<h3 id="更改配置文件-官方链接"><a href="#更改配置文件-官方链接" class="headerlink" title="更改配置文件 官方链接"></a><strong><em>更改配置文件</em></strong> <a href="https://hadoop.apache.org/docs/r2.6.0/" target="_blank" rel="noopener">官方链接</a></h3><p>hadoop的配置文件都放在了$HADOOP_HOME/etc/hadoop下<br><code>$ cd $HADOOP_HOME/etc/hadoop</code></p>
-<p>以下是必须编辑配置Hadoop的文件列表。</p>
-<p><strong>core-site.xml</strong><br>core-site.xml文件中包含如读/写缓冲器用于Hadoop的实例的端口号的信息，分配给文件系统存储，用于存储所述数据存储器的限制和大小。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;fs.default.name &lt;/name&gt;</span><br><span class="line">      &lt;value&gt; hdfs://localhost:9000 &lt;/value&gt; </span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"> </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>hdfs-site.xml</strong></p>
-<p>hdfs的配置文件，至少需要设置副本数dfs.replication，NameNode路径信息(fsimage)，以及本地文件系统的数据节点的路径</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.replication&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;1&lt;/value&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.name.dir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;file:///home/hadoop/hdfs/namenode &lt;/value&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">    </span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;dfs.data.dir&lt;/name&gt; </span><br><span class="line">      &lt;value&gt;file:///home/hadoop/hdfs/datanode &lt;/value&gt; </span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">       </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>yarn-site.xml</strong></p>
-<p>需要配置NodeManager上的附属服务mapreduce_shuffle，才能运行MR任务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"> </span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;yarn.nodemanager.aux-services&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;mapreduce_shuffle&lt;/value&gt; </span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>mapred-site.xml</strong></p>
-<p>MR的配置文件，需要指定运行在yarn上</p>
-<p><code>$ cp mapred-site.xml.template mapred-site.xml</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"> </span><br><span class="line">   &lt;property&gt; </span><br><span class="line">      &lt;name&gt;mapreduce.framework.name&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;yarn&lt;/value&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">   </span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure>
-<p>配置完成</p>
-<h2 id="验证Hadoop安装"><a href="#验证Hadoop安装" class="headerlink" title="验证Hadoop安装"></a>验证Hadoop安装</h2><h3 id="第1步：名称节点设置"><a href="#第1步：名称节点设置" class="headerlink" title="第1步：名称节点设置"></a>第1步：名称节点设置</h3><p>第一次运行之前，先在NameNode上初始格式化<br><code>hdfs namenode -format</code></p>
-<h3 id="第2步：起hdfs"><a href="#第2步：起hdfs" class="headerlink" title="第2步：起hdfs"></a>第2步：起hdfs</h3><p><code>$ start-dfs.sh</code></p>
-<p>启动成功的话，jps里面会有DataNode、NameNode、SecondaryNameNode</p>
-<h3 id="第3步：起yarn"><a href="#第3步：起yarn" class="headerlink" title="第3步：起yarn"></a>第3步：起yarn</h3><p><code>$ start-yarn.sh</code></p>
-<p>启动成功的话，jps里面会有ResourceManager、NodeManager</p>
-<h3 id="第4步：UI访问hadoop"><a href="#第4步：UI访问hadoop" class="headerlink" title="第4步：UI访问hadoop"></a>第4步：UI访问hadoop</h3><p>Hadoop默认端口号为50070, 启动成功的话<br><a href="http://localhost:50070/" target="_blank" rel="noopener">http://localhost:50070/</a><br>应该可以成功连上</p>
-<h3 id="第5步：验证所有应用程序的集群"><a href="#第5步：验证所有应用程序的集群" class="headerlink" title="第5步：验证所有应用程序的集群"></a>第5步：验证所有应用程序的集群</h3><p>访问集群中的所有应用程序的默认端口号为8088。（yarn调度的这个）<br><a href="http://localhost:8088/" target="_blank" rel="noopener">http://localhost:8088/</a><br>成功连上差不多就是搞定了</p>
-<h1 id="5-安装spark-yarn调度"><a href="#5-安装spark-yarn调度" class="headerlink" title="5. 安装spark (yarn调度)"></a>5. 安装spark (yarn调度)</h1><p>spark必须选择spark源码进行编译(为了不带hive，防止版本冲突)，而且还要严格的遵守hive提供的支持版本进行下载（否则后果很可能是放弃）<br><a href="https://archive.apache.org/dist/spark/spark-2.0.0/" target="_blank" rel="noopener">https://archive.apache.org/dist/spark/spark-2.0.0/</a></p>
-<p>解压后编译（要花很多时间，下载各种依赖）<br><code>$ ./make-distribution.sh --name &quot;hadoop2-without-hive&quot; --tgz &quot;-Pyarn,hadoop-provided,hadoop-2.6,parquet-provided&quot;</code></p>
-<p>安装好spark再配一下SPARK_HOME<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export SPARK_HOME=&#123;&#125;</span><br><span class="line">export PATH=$PATH:$SPARK_HOME/bin</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="更改配置文件"><a href="#更改配置文件" class="headerlink" title="更改配置文件"></a>更改配置文件</h3><p>只需要配置一个文件<code>/conf/spark-env.sh</code>就行了（因为yarn调度，所以spark就省事了）</p>
-<p><strong>spark-env.sh</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># JDK目录</span><br><span class="line">export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_171.jdk/Contents/Home</span><br><span class="line"># Scala目录</span><br><span class="line">export SCALA_HOME=/Users/xinmei/scala</span><br><span class="line"># Master IP地址</span><br><span class="line">export SPARK_MASTER_IP=localhost</span><br><span class="line"># Worker运行内存</span><br><span class="line"># export SPARK_WORKER_MEMORY=2G</span><br><span class="line"># hadoop配置文件目录 cdh中默认是如下目录 这个hadoop必须运行在yarn上 spark才能直接通过此配置文件目录通过yarn进行调度</span><br><span class="line">export HADOOP_CONF_DIR=/Users/xinmei/hadoop/etc/hadoop</span><br><span class="line">export HADOOP_HOME=/Users/xinmei/hadoop</span><br><span class="line">export SPARK_DIST_CLASSPATH=`hadoop classpath`</span><br></pre></td></tr></table></figure>
-<p>提交spark任务的时候，master指定yarn就行了<br><code>$ spark-submit --master yarn {}</code></p>
-<p>然后在yarn的UI界面可以看到对应的spark任务<br><a href="http://localhost:8088/" target="_blank" rel="noopener">http://localhost:8088/</a></p>
-<h1 id="6-安装hive"><a href="#6-安装hive" class="headerlink" title="6. 安装hive"></a>6. 安装hive</h1><p>hive我用的是2.3.4，理论上来讲2.3.*应该都可以<br>下载链接：<br><a href="http://apache.website-solution.net/hive/hive-2.3.4/apache-hive-2.3.4-bin.tar.gz" target="_blank" rel="noopener">http://apache.website-solution.net/hive/hive-2.3.4/apache-hive-2.3.4-bin.tar.gz </a></p>
-<p>解压后配一下HIVE_HOME<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export HIVE_HOME=&#123;&#125;</span><br><span class="line">export PATH=$HIVE_HOME/bin:$PATH</span><br></pre></td></tr></table></figure></p>
-<hr>
-<h3 id="更改配置文件-1"><a href="#更改配置文件-1" class="headerlink" title="更改配置文件"></a>更改配置文件</h3><p><strong>hive-env.sh</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export HADOOP_HOME=&#123;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>hive-site.xml</strong></p>
-<p>先从模板复制出hive-site.xml<br><code>$ cp hive-default.xml.template hive-site.xml</code></p>
-<p>然后需要改很多东西：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">&lt;configuration&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionURL&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;jdbc:mysql://localhost:3306/metastore?createDatabaseIfNotExist=true&amp;amp;useSSL=false&lt;/value&gt;  </span><br><span class="line">      &lt;description&gt;元数据存在mysql中&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionUserName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;hive&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;连接mysql的用户名&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionPassword&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;hivepassword&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;连接mysql的密码&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;javax.jdo.option.ConnectionDriverName&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;com.mysql.jdbc.Driver&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;配置mysql的driver&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.metastore.warehouse.dir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;/hive/warehouse&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;数据表存放的hdfs路径&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">    &lt;name&gt;hive.exec.scratchdir&lt;/name&gt;</span><br><span class="line">    &lt;value&gt;/hive/tmp&lt;/value&gt;</span><br><span class="line">    &lt;description&gt;HDFS路径，用于存储不同 map/reduce 阶段的执行计划和这些阶段的中间输出结果。&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.querylog.location&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;/hive/log&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;存放log的hdfs路径&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.exec.local.scratchdir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;/Users/&#123;aaa&#125;/hive/tmp/$&#123;user.name&#125;&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;本地hive临时文件路径&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.server2.logging.operation.log.location&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;/Users/&#123;aaa&#125;/hive/tmp/$&#123;user.name&#125;/operation_logs&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;Top level directory where operation logs are stored if logging functionality is enabled&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.downloaded.resources.dir&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;/Users/&#123;aaa&#125;/hive/tmp/$&#123;hive.session.id&#125;_resources&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;Temporary local directory for added resources in the remote file system.&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">   &lt;property&gt;</span><br><span class="line">      &lt;name&gt;hive.execution.engine&lt;/name&gt;</span><br><span class="line">      &lt;value&gt;spark&lt;/value&gt;</span><br><span class="line">      &lt;description&gt;你懂的&lt;/description&gt;</span><br><span class="line">   &lt;/property&gt;</span><br><span class="line"></span><br><span class="line">&lt;/configuration&gt;</span><br></pre></td></tr></table></figure></p>
-<p>然后在lib下添加mysql驱动包（直接从网上下一个就好了）：<br><em>mysql-connector-java-5.1.47-bin.jar</em></p>
-<p>然后初始化hive元数据：<br><code>$ schematool -initSchema -dbType mysql</code></p>
-<p>初始化成功的话，mysql中会出现一个名叫<code>metastore</code>的database，里面有一堆table。</p>
-<p>然后就可以试试效果了，一切顺利的话，hive运行任务的时候应该会是这样的：<br><img src="/images/hive_on_spark_1.png" alt></p>
-<p>然后<a href="http://localhost:8088/" target="_blank" rel="noopener">hadoop UI</a>里面会有对应的任务记录：<br><img src="/images/hive_on_spark_2.png" alt></p>
-
-          
+          hive on spark对hive和spark的版本要求比较严格。之前调试踩了各种坑，最后屈服，使用了hadoop 2.6，spark 2.0.0，hive 2.3.4
+调度统一使用YARN
+官方链接https://cwiki.apache.org/confluence/display/Hive/
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/05/02/2019-05-02-hive on spark 框架搭建/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1036,17 +1013,15 @@
       
         
           
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/04/30/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
