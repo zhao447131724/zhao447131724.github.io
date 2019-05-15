@@ -91,7 +91,7 @@
 <meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_3.png">
 <meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_4.png">
 <meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_5.png">
-<meta property="og:updated_time" content="2019-05-15T03:09:38.950Z">
+<meta property="og:updated_time" content="2019-05-15T08:24:36.913Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka学习笔记1">
 <meta name="twitter:description" content="看啥摘要，进来看呀">
@@ -313,7 +313,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-15T11:09:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-15T16:24:36+08:00">
                 2019-05-15
               </time>
             
@@ -422,8 +422,9 @@
 <h3 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h3><p>对于旧版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning</span><br></pre></td></tr></table></figure></p>
 <p>可以看到，consumer连接的是zookeeper，使用zookeeper管理的offset。<br>其中：<br>    –from-beginning 从头开始消费，如果没有这个的话，只能消费到从此时新来的消息。</p>
 <p>这里需要提一下，consumer和leader之间的通信需要offset的情况。而旧版本offset存在了zookeeper里面，所以consumer需要连接zookeeper</p>
-<p>对于新版本，offset放在了kafka本地，就避免了和zookeeper的通信，提高了性能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure></p>
+<p>对于新版本，offset放在了kafka本地，就避免了和zookeeper的通信，提高了性能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test</span><br></pre></td></tr></table></figure></p>
 <p>可以看到，新版本直接连接的是kafka的端口，简化了通信消耗。<br>此时，再看topic list，可以看到有<code>__consumer_offsets</code>这个，就是对应的offset信息。<br>可见，kafka的信息都是保存在topic中的。</p>
+<p>注：经试验发现，直连kafka端口，使用–from-beginning可能会导致无法接收数据，具体原因不明</p>
 <h3 id="删除topic"><a href="#删除topic" class="headerlink" title="删除topic"></a>删除topic</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic test</span><br></pre></td></tr></table></figure>
 <p>可能会提示：<br><img src="/images/kafka学习笔记1_5.png" alt><br>如果已经配置了<code>delete.topic.enable=true</code>，可以忽略这个提示，是一个bug。我用的是0.11.0.1版本的kafka。</p>
 
