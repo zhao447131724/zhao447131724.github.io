@@ -79,23 +79,23 @@
 
 
 
-<meta name="description" content="消息队列消息队列，包含两种模式： 点对点模式 一对一，消费者主动拉取数据，消息收到后消息清除。 需要客户端有一个线程去监控是否有新数据。 发布/订阅模式 一对多，数据生产后，推送给所有订阅者。 不需要额外线程去监控。 受到服务器的推送速度和客户端的接收处理速度影响，可能会有服务器资源浪费的情况。  为什么需要消息队列（优点）： 解耦 使用中间件作为中转避免客户端之间直连，使两边服务器代码互相独立，">
+<meta name="description" content="看啥摘要，进来看呀">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kafka学习笔记1">
 <meta property="og:url" content="http://yoursite.com/2019/05/13/2019-05-13-kafka学习笔记1/index.html">
 <meta property="og:site_name" content="Han">
-<meta property="og:description" content="消息队列消息队列，包含两种模式： 点对点模式 一对一，消费者主动拉取数据，消息收到后消息清除。 需要客户端有一个线程去监控是否有新数据。 发布/订阅模式 一对多，数据生产后，推送给所有订阅者。 不需要额外线程去监控。 受到服务器的推送速度和客户端的接收处理速度影响，可能会有服务器资源浪费的情况。  为什么需要消息队列（优点）： 解耦 使用中间件作为中转避免客户端之间直连，使两边服务器代码互相独立，">
+<meta property="og:description" content="看啥摘要，进来看呀">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记_1.png">
-<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记_2.png">
-<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记_3.png">
-<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记_4.png">
-<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记_5.png">
-<meta property="og:updated_time" content="2019-05-13T10:58:36.755Z">
+<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_1.png">
+<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_2.png">
+<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_3.png">
+<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_4.png">
+<meta property="og:image" content="http://yoursite.com/images/kafka学习笔记1_5.png">
+<meta property="og:updated_time" content="2019-05-15T03:09:38.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka学习笔记1">
-<meta name="twitter:description" content="消息队列消息队列，包含两种模式： 点对点模式 一对一，消费者主动拉取数据，消息收到后消息清除。 需要客户端有一个线程去监控是否有新数据。 发布/订阅模式 一对多，数据生产后，推送给所有订阅者。 不需要额外线程去监控。 受到服务器的推送速度和客户端的接收处理速度影响，可能会有服务器资源浪费的情况。  为什么需要消息队列（优点）： 解耦 使用中间件作为中转避免客户端之间直连，使两边服务器代码互相独立，">
-<meta name="twitter:image" content="http://yoursite.com/images/kafka学习笔记_1.png">
+<meta name="twitter:description" content="看啥摘要，进来看呀">
+<meta name="twitter:image" content="http://yoursite.com/images/kafka学习笔记1_1.png">
 
 
 
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-13T18:58:36+08:00">
-                2019-05-13
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-15T11:09:38+08:00">
+                2019-05-15
               </time>
             
           </span>
@@ -363,7 +363,8 @@
       
 
       
-        <h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><h2 id="消息队列，包含两种模式："><a href="#消息队列，包含两种模式：" class="headerlink" title="消息队列，包含两种模式："></a>消息队列，包含两种模式：</h2><ol>
+        <p>看啥摘要，进来看呀<br><a id="more"></a></p>
+<h1 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a>消息队列</h1><h2 id="消息队列，包含两种模式："><a href="#消息队列，包含两种模式：" class="headerlink" title="消息队列，包含两种模式："></a>消息队列，包含两种模式：</h2><ol>
 <li>点对点模式<br> 一对一，消费者<strong><em>主动拉取</em></strong>数据，消息收到后消息清除。<br> 需要客户端有一个线程去监控是否有新数据。</li>
 <li>发布/订阅模式<br> 一对多，数据生产后，推送给所有订阅者。<br> 不需要额外线程去监控。<br> 受到服务器的推送速度和客户端的接收处理速度影响，可能会有服务器资源浪费的情况。</li>
 </ol>
@@ -379,11 +380,11 @@
 <h1 id="什么是Kafka"><a href="#什么是Kafka" class="headerlink" title="什么是Kafka"></a>什么是Kafka</h1><ol>
 <li>开源消息系统，用来缓存数据</li>
 <li>scala开发的</li>
-<li>分布式消息队列，对消息保存时根据<strong>topic</strong>。<br>发送消息者叫<strong>producer</strong>，消息接受者叫<strong>consumer</strong>。<br>kafka集群的每个实例（server）叫<strong>broker</strong>。</li>
+<li>分布式消息队列，对消息保存时根据<strong>topic</strong>分类。<br>发送消息者叫<strong>producer</strong>，消息接受者叫<strong>consumer</strong>。<br>kafka集群的每个实例（server）叫<strong>broker</strong>。</li>
 <li>依赖于<strong>zookeeper</strong>集群，保存meta信息，进行调度<br>（offset老版本保存在zookeeper，新版本保存在服务器本地）</li>
 </ol>
 <hr>
-<h1 id="Kafka架构"><a href="#Kafka架构" class="headerlink" title="Kafka架构"></a>Kafka架构</h1><p>直接上图吧：<br><img src="/images/kafka学习笔记_1.png" alt></p>
+<h1 id="Kafka架构"><a href="#Kafka架构" class="headerlink" title="Kafka架构"></a>Kafka架构</h1><p>直接上图吧：<br><img src="/images/kafka学习笔记1_1.png" alt></p>
 <h2 id="生产数据"><a href="#生产数据" class="headerlink" title="生产数据"></a>生产数据</h2><ol>
 <li>producer把消息发给leader</li>
 <li>leader把消息备份给follower</li>
@@ -406,8 +407,8 @@
 <p>需要设置的参数有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 每个服务器要对应一个不同的broker.id！</span><br><span class="line">broker.id=0</span><br><span class="line"></span><br><span class="line"># 是否能删除topic。默认是false，这样删除的话，就会在topic上打个deleted的标记，但是不会真的删除这个topic，使得这个topic的名字就没法用了。所以给他改成true。</span><br><span class="line">delete.topic.enable=true</span><br><span class="line"></span><br><span class="line"># 虽然他叫log，但是数据也存在了这里！</span><br><span class="line">log.dirs=&#123;刚才那个logs文件夹的路径&#125;</span><br><span class="line"></span><br><span class="line"># 消息保存的时间，超过这个时间的数据就会被删掉了！</span><br><span class="line">log.retention.hours=168</span><br><span class="line"></span><br><span class="line"># 每个segment的大小。当前segment超过这个的时候，会生成一个文件新的segment继续写。</span><br><span class="line">log.segment.bytes=1073741824</span><br><span class="line"></span><br><span class="line"># zookeeper集群的端口，默认2181。多个机器的话，可以改成第二行那样。</span><br><span class="line">zookeeper.connect=localhost:2181</span><br><span class="line">zookeeper.connect=hadoop001:2181,hadoop002:2181,hadoop003:2181</span><br></pre></td></tr></table></figure></p>
 <p>集群模式的话，分发一下这个配置好参数的kafka文件夹。然后对于每个机器，单独改一下broker.id。</p>
 <h2 id="启动"><a href="#启动" class="headerlink" title="启动"></a>启动</h2><p>首先先起zookeeper服务（在每个机器上都要启动）<br><code>$ bin/zookeeper-server-start.sh config/zookeeper.properties</code><br>这个命令要在每个服务器上都起起来，可以编个脚本省事</p>
-<p><code>jps</code> 的话，应该可以看到zookeeper的守护进程<code>QuorumPeerMain</code><br><img src="/images/kafka学习笔记_2.png" alt><br>小提示：<code>jps -l</code> 可以看到class全名</p>
-<p>更保险的话，可以执行个zookeeper-shell.sh的命令试试，比如：<br><code>bin/zookeeper-shell.sh localhost:2181 history</code><br>顺利的话，应该是这样的：<br><img src="/images/kafka学习笔记_3.png" alt></p>
+<p><code>jps</code> 的话，应该可以看到zookeeper的守护进程<code>QuorumPeerMain</code><br><img src="/images/kafka学习笔记1_2.png" alt><br>小提示：<code>jps -l</code> 可以看到class全名</p>
+<p>更保险的话，可以执行个zookeeper-shell.sh的命令试试，比如：<br><code>bin/zookeeper-shell.sh localhost:2181 history</code><br>顺利的话，应该是这样的：<br><img src="/images/kafka学习笔记1_3.png" alt></p>
 <p>然后启动kafka服务（在每个机器上都要启动）<br><code>$ bin/kafka-server-start.sh config/server.properties</code></p>
 <p>然后可以查看broke_list：<br><code>$ ./zookeeper-shell.sh localhost:2181 &lt;&lt;&lt; &quot;ls /brokers/ids&quot;</code></p>
 <hr>
@@ -415,7 +416,7 @@
 <p>其中：<br>    –zookeeper 要改成对应的zookeeper服务器ip和端口<br>    –replication-factor 副本数（要&lt;=服务器数量，否则没有意义，也会报错）<br>    –partitions 分区数<br>    –topic topic的名字</p>
 <h3 id="查看topic-list"><a href="#查看topic-list" class="headerlink" title="查看topic list"></a>查看topic list</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --list --zookeeper localhost:2181</span><br></pre></td></tr></table></figure>
 <p>创建topic成功后，也可以看到logs文件夹下有一个或多个topic name的文件夹，后面的-0这个数字就是对应的分区号。</p>
-<h3 id="查看topic详情"><a href="#查看topic详情" class="headerlink" title="查看topic详情"></a>查看topic详情</h3><p><code>$ bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test</code><br><img src="/images/kafka学习笔记_4.png" alt><br>其中：<br>    Partition 对应的分区号<br>    Leader 就是Leader的broker.id<br>    Replicas 副本存放的机器的broker.id<br>    Isr Leader挂掉后，选举新Leader用的顺序，取决于Follower从Leader获取数据速度（数据差越小，越靠前）</p>
+<h3 id="查看topic详情"><a href="#查看topic详情" class="headerlink" title="查看topic详情"></a>查看topic详情</h3><p><code>$ bin/kafka-topics.sh --describe --zookeeper localhost:2181 --topic test</code><br><img src="/images/kafka学习笔记1_4.png" alt><br>其中：<br>    Partition 对应的分区号<br>    Leader 就是Leader的broker.id<br>    Replicas 副本存放的机器的broker.id<br>    Isr Leader挂掉后，选举新Leader用的顺序，取决于Follower从Leader获取数据速度（数据差越小，越靠前）</p>
 <h3 id="发布消息"><a href="#发布消息" class="headerlink" title="发布消息"></a>发布消息</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test</span><br></pre></td></tr></table></figure>
 <p>这里可以看到，发布消息是不需要连接zookeeper的，连的是kafka的端口9092。功能上只需要给一个broker就可以了，不同broker之间可以互相通信。<strong><em>但是为了HA，建议放2个以上的broker</em></strong>。</p>
 <h3 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h3><p>对于旧版本：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic test --from-beginning</span><br></pre></td></tr></table></figure></p>
@@ -424,7 +425,7 @@
 <p>对于新版本，offset放在了kafka本地，就避免了和zookeeper的通信，提高了性能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning</span><br></pre></td></tr></table></figure></p>
 <p>可以看到，新版本直接连接的是kafka的端口，简化了通信消耗。<br>此时，再看topic list，可以看到有<code>__consumer_offsets</code>这个，就是对应的offset信息。<br>可见，kafka的信息都是保存在topic中的。</p>
 <h3 id="删除topic"><a href="#删除topic" class="headerlink" title="删除topic"></a>删除topic</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --delete --zookeeper localhost:2181 --topic test</span><br></pre></td></tr></table></figure>
-<p>可能会提示：<br><img src="/images/kafka学习笔记_5.png" alt><br>如果已经配置了<code>delete.topic.enable=true</code>，可以忽略这个提示，是一个bug。我用的是0.11.0.1版本的kafka。</p>
+<p>可能会提示：<br><img src="/images/kafka学习笔记1_5.png" alt><br>如果已经配置了<code>delete.topic.enable=true</code>，可以忽略这个提示，是一个bug。我用的是0.11.0.1版本的kafka。</p>
 
       
     </div>
@@ -494,6 +495,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/14/2019-05-14-kafka学习笔记2/" rel="prev" title="kafka学习笔记2">
+                kafka学习笔记2 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -577,7 +582,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
