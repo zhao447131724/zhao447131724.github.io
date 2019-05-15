@@ -88,7 +88,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/images/kafka学习笔记2_1.png">
 <meta property="og:image" content="http://yoursite.com/images/kafka学习笔记2_2.png">
-<meta property="og:updated_time" content="2019-05-15T03:09:38.951Z">
+<meta property="og:updated_time" content="2019-05-15T09:02:30.080Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kafka学习笔记2">
 <meta name="twitter:description" content="看啥摘要，进来看呀">
@@ -310,7 +310,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-05-15T11:09:38+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-05-15T17:02:30+08:00">
                 2019-05-15
               </time>
             
@@ -373,7 +373,7 @@
 3. partition与key都未指定，则轮流访问
 </code></pre></li>
 <li><p>ACK应答机制<br> producer可以设置ACK的值（0, 1, all），其中：</p>
-<pre><code>0：完全不管kafka是否收到消息，继续发消息
+<pre><code>0：完全不管kafka是否收到消息，继续发消息(回传数据callback的metadata里面offset就会是-1了)
 1：***leader***收到数据返回ACK给producer，再继续发消息
 all：***leader***收到数据，并且***follower***也收到数据，所有follower返回ACK给leader，leader再返回ACK给producer，再继续发消息
 </code></pre><p> 有人测试过，0的数据传输效率大概是all的10倍，但是all最安全，不会丢数据。</p>
