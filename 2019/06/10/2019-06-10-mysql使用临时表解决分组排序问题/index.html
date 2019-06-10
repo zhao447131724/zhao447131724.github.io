@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Han">
 <meta property="og:description" content="看啥摘要，进来看呀">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-06-10T08:54:51.535Z">
+<meta property="og:updated_time" content="2019-06-10T11:58:29.297Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql使用临时表解决分组排序问题">
 <meta name="twitter:description" content="看啥摘要，进来看呀">
@@ -307,7 +307,7 @@
               
                 <span class="post-meta-item-text">更新于&#58;</span>
               
-              <time title="更新于" itemprop="dateModified" datetime="2019-06-10T16:54:51+08:00">
+              <time title="更新于" itemprop="dateModified" datetime="2019-06-10T19:58:29+08:00">
                 2019-06-10
               </time>
             
@@ -405,6 +405,8 @@
 <p>然后，要求出每个nation对应的出现频率最高的top3的word。</p>
 <hr>
 <p>我个人思路是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 使用临时表，减少查询量，空间换时间</span><br><span class="line">create temporary table bbb(</span><br><span class="line">nation VARCHAR(16),</span><br><span class="line">word VARCHAR(256),</span><br><span class="line">count int</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"># 统计每个国家对应的每个词的词频</span><br><span class="line">insert into bbb select nation, word, count(*) as count from aaa group by nation, word;</span><br><span class="line"></span><br><span class="line"># 对于每个nation下，获取（count数量比当前word的count数量大的数据的条数）&lt; 3的word，也就是结果啦！</span><br><span class="line">select * </span><br><span class="line">from bbb as a</span><br><span class="line">where 3 &gt; (select count(*) from bbb where nation=a.nation and count &gt; a.count)</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>这个应该是最优解了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select nation, word from </span><br><span class="line">(select nation, word,</span><br><span class="line">@nation_rank:=IF(@current_nation=nation,</span><br><span class="line">				@nation_rank+1,</span><br><span class="line">				1) as rank</span><br><span class="line">@current_nation:=nation</span><br><span class="line">from aaa</span><br><span class="line">group by nation, word</span><br><span class="line">order by nation, count(*) desc) bbb</span><br><span class="line">where rank &lt;= 3</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
